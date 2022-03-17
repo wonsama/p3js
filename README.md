@@ -68,3 +68,7 @@ git commit -m "처음 커밋"
 `npm run build` 명령을 실행하면 프로젝트에 의존하는 다른 자산과 함께 `dist/bundle.min.js`에 있는 단일 번들로 코드가 빌드됩니다.
 
 `dist` 폴더의 내용을 공개적으로 액세스할 수 있는 위치(예: `http://mycoolserver.com`)에 넣으면 `http://mycoolserver.com/index.html` 을 웹에서 열 수 있습니다.
+
+## 수정
+
+* [Phaser3 로 게임을 설정하는 방법](https://www.youtube.com/watch?v=bo3BNf3XDNc)
