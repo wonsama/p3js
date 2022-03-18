@@ -1,6 +1,10 @@
 import Scene1 from "../scenes/Scene1";
 import Scene2 from "../scenes/Scene2";
 
+export const GAME_SETTINGS = {
+  moveSpeed: 100,
+};
+
 export default {
   type: Phaser.AUTO,
   parent: "phaser-example",
