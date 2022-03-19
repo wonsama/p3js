@@ -2,6 +2,8 @@ import "phaser";
 
 import config, { GAME_SETTINGS } from "../config/config.js";
 
+import Beam from "./Beam.js";
+
 export default class Scene2 extends Phaser.Scene {
   constructor() {
     super("playGame");
@@ -50,7 +52,6 @@ export default class Scene2 extends Phaser.Scene {
       powerUp.setCollideWorldBounds(true);
       powerUp.setBounce(true);
     }
-    console.log(this.powerUps);
 
     // 에니메이션 실행
     this.ship1.play("ship1_anim");
@@ -77,11 +78,14 @@ export default class Scene2 extends Phaser.Scene {
       Phaser.Input.Keyboard.KeyCodes.SPACE
     );
 
+    // 투사체 그룹 생성
+    this.projectiles = this.add.group();
+
     // event - gameobjectdown
     this.input.on("gameobjectdown", this.destoyShip, this);
 
     // 텍스트
-    this.add.text(20, 20, "playing game", {
+    this.add.text(20, 20, "박한결", {
       font: "25px Arial",
       fill: "yellow",
     });
@@ -100,8 +104,19 @@ export default class Scene2 extends Phaser.Scene {
 
     // 미사일발사
     if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
-      console.log("fire");
+      this.shootBeam();
     }
+
+    // 미사일 업데이트 처리
+    for (var i = 0; i < this.projectiles.getChildren().length; i++) {
+      var beam = this.projectiles.getChildren()[i];
+      beam.update();
+    }
+  }
+
+  shootBeam() {
+    // let beam = this.physics.add.sprite(this.player.x, this.player.y, "beam");
+    let beam = new Beam(this);
   }
 
   movePlayerManager() {
